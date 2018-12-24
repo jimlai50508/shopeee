@@ -1,0 +1,16 @@
+extends layout
+block content
+	link(rel='stylesheet' href='/stylesheets/edit.sass')
+	section
+		form(action=`/product/edit/${product.editToken}` method='post' enctype='multipart/form-data')
+			label 商品名稱
+			input(value=`${product.product}`)
+			label 價格
+			input(value=`${product.price}`)
+			label 數量
+			input(value=`${product.stock}`)
+			label 商品敘述
+			input(value=`${product.description}`)
+			each image in product.images
+				img(src=`https://s3.amazonaws.com/fakeshopee/${image}`)
+			button Update

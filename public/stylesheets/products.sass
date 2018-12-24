@@ -1,0 +1,375 @@
+@mixin size($w, $h: $w)
+	width: $w
+	height: $h
+
+@media screen and (max-width: 500px) 
+	header.login
+		& .topmenu
+			color: darkgrey
+		& .title
+			display: none
+	.scene
+		display: flex
+		justify-content: center
+	section.category
+		+size(100%)
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items: center
+		position: fixed
+		top: 95%
+		padding: 10vw
+		background-color: #33405B
+		border-radius: 10vw 10vw 0 0
+		box-shadow: 0 0 20px black
+		transition: 0.5s
+		z-index: 4
+		&.showCategory
+			top: 0%
+		& *
+			color: #ccc
+		&>.symbol
+			position: absolute
+			left: 50%
+			top: 0%
+			font-size: 4vw
+			font-weight: bold
+			cursor: pointer
+		& .category
+			font-size: 5vw
+		& .subcategory
+			display: flex
+			flex-direction: column
+			font-size: 4vw
+			padding-left: 4vw
+	section.products
+		+size(90%)
+		.topSection
+			+size(100%, 20vw)
+			display: flex
+			flex-direction: column
+			align-items: baseline
+			margin: 10vw 0
+			color: #33405B
+			font-weight: bold
+			font-size: 6vw
+			&>*
+				margin: 0px 10px
+			&>.pageAndClearCart
+				&>.pageSection
+					&>*
+						margin: 0 0.8vw
+					&>.nowPage
+						font-size: 4vw
+					&>a, .noPage
+						text-decoration: none
+						color: #33405B
+						font-size: 3vw
+					&>.noPage
+						color: #bbb
+				&>.clearCart
+					cursor: pointer
+					font-size: 2vw
+		&>.productSection
+			display: flex
+			justify-content: space-between
+			flex-wrap: wrap
+			&>.product
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+				width: 100%
+				margin-bottom: 10vw
+				margin-right: 1vw
+				box-shadow: 0 0 10px black
+				padding: 4vw
+				&>.imgBlock
+					&>img
+						+size(100%)
+				&>.infoSection
+					&>.firstSection
+						&>a
+							display: block
+							text-decoration: none
+							color: #33405B
+							font-size: 5vw
+							font-weight: bold
+							&.productCol
+								overflow: hidden
+								text-overflow: ellipsis
+								white-space: nowrap
+							&.sellerCol
+								font-size: 4vw
+					&>.secondSection
+						display: flex
+						align-items: center
+						margin-top: 1vw
+						&>.leftSection>span
+							flex: 1
+							margin-right: 0.5vw
+							font-size: 4vw
+							font-weight: bold
+						&>.rightSection
+							flex: 1
+							display: flex
+							justify-content: flex-end
+							.btn
+								margin-right: 1vw
+								padding: 0.1vw
+								&.btnAdd
+									color: #a39c9c
+								&.btnRemove
+									color: #BB5346
+									over-flow: hidden
+								&.btnToCart
+									color: #a39c9c
+									&:active
+										color: #212529
+
+@media screen and (min-width: 500px) and (max-width: 930px) 
+	header.login
+		& .topmenu
+			color: darkgrey
+		& .title
+			display: none
+	.scene
+		display: flex
+		justify-content: center
+	section.category
+		+size(100%)
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items: center
+		position: fixed
+		top: 95%
+		padding: 5vw
+		background-color: #33405B
+		border-radius: 10vw 10vw 0 0
+		box-shadow: 0 0 20px black
+		transition: 0.5s
+		z-index: 4
+		&.showCategory
+			top: 0%
+		& *
+			color: #ccc
+		&>.symbol
+			position: absolute
+			left: 50%
+			top: 0%
+			font-size: 2.5vw
+			font-weight: bold
+			cursor: pointer
+		& .category
+			font-size: 3vw
+		& .subcategory
+			display: flex
+			flex-direction: column
+			font-size: 2.5vw
+			padding-left: 3vw
+	section.products
+		+size(90%)
+		.topSection
+			+size(100%, 11vw)
+			display: flex
+			flex-direction: column
+			align-items: baseline
+			margin: 2vw 0
+			color: #33405B
+			font-weight: bold
+			&>*
+				margin: 0px 10px
+			&>.pageAndClearCart
+				width: 90%
+				display: flex
+				justify-content: space-between
+				align-items: baseline
+				&>.pageSection
+					&>*
+						margin: 0 0.8vw
+					&>.nowPage
+						font-size: 1vw
+					&>a, .noPage
+						text-decoration: none
+						color: #33405B
+						font-size: 0.7vw
+					&>.noPage
+						color: #bbb
+				&>.clearCart
+					cursor: pointer
+		&>.productSection
+			display: flex
+			justify-content: flex-start
+			flex-wrap: wrap
+			&>.product
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+				width: 29%
+				margin-right: 3vw
+				margin-bottom: 5vw
+				box-shadow: 0 0 10px black
+				padding: 2vw
+				&>.imgBlock
+					&>img
+						+size(100%)
+				&>.infoSection
+					&>.firstSection
+						&>a
+							display: block
+							text-decoration: none
+							color: #33405B
+							font-size: 1.2vw
+							font-weight: bold
+							&.productCol
+								overflow: hidden
+								text-overflow: ellipsis
+								white-space: nowrap
+							&.sellerCol
+								font-size: 1.1vw
+					&>.secondSection
+						display: flex
+						align-items: center
+						margin-top: 1vw
+						&>.leftSection>span
+							flex: 1
+							margin-right: 0.5vw
+							font-size: 1vw
+							font-weight: bold
+						&>.rightSection
+							flex: 1
+							display: flex
+							justify-content: flex-end
+							.btn
+								margin-right: 0.5vw
+								padding: 0.1vw
+								&.btnAdd
+									color: #a39c9c
+								&.btnRemove
+									color: #BB5346
+									over-flow: hidden
+								&.btnToCart
+									color: #a39c9c
+									&:active
+										color: #212529
+
+@media screen and (min-width: 930px) 
+	header
+		background-color: #33405b
+		box-shadow: 0 0 10px #33405b
+		padding-bottom: 10px
+	.scene
+		width: 100%
+		display: flex
+		padding: 5%
+		background-color: #f5f5f5
+	section.category
+		flex: 2
+		display: flex
+		flex-direction: column
+		& *
+			color: #33405B
+		& .category
+			margin-top: 10px
+			font-size: 1.2vw
+		& .subcategory
+			display: flex
+			flex-direction: column
+			font-size: 1vw
+			padding-left: 1vw
+		& .symbol
+			display: none
+	section.products
+		flex: 8
+		.topSection
+			+size(100%, 2vw)
+			display: flex
+			justify-content: space-between
+			align-items: baseline
+			margin: 2vw 0
+			color: #33405B
+			font-weight: bold
+			&>*
+				margin: 0px 10px
+			&>.pageAndClearCart
+				display: flex
+				align-items: baseline
+				&>.pageSection
+					&>*
+						margin: 0 0.8vw
+					&>.nowPage
+						font-size: 1vw
+					&>a, .noPage
+						text-decoration: none
+						color: #33405B
+						font-size: 0.7vw
+					&>.noPage
+						color: #bbb
+				&>.clearCart
+					cursor: pointer
+					margin-left: 0.5vw
+		.productSection
+			display: flex
+			flex-wrap: wrap
+			justify-content: flex-start
+			&>*
+				margin: 2vw 0
+			.product
+				+size(22%, 25vw)
+				position: relative
+				margin-right: 2vw
+				padding: 1vw 0.6vw
+				font-size: 1vw
+				background-color: #fff
+				box-shadow: 0 0 1vw black
+				&>.imgBlock
+					+size(100%, 70%)
+					overflow: hidden
+					&>img
+						+size(100%)
+						display: block
+						margin: 0 auto
+						transition: 0.5s
+						&:hover
+							transform: scale(1.2)
+				&>.infoSection
+					margin-top: 0.5vw
+					&>.firstSection
+						&>a
+							display: block
+							text-decoration: none
+							color: #33405B
+							font-size: 1.2vw
+							font-weight: bold
+							&.productCol
+								overflow: hidden
+								text-overflow: ellipsis
+								white-space: nowrap
+							&.sellerCol
+								font-size: 1.1vw
+					&>.secondSection
+						display: flex
+						align-items: center
+						margin-top: 1vw
+						&>.leftSection>span
+							flex: 1
+							margin-right: 0.5vw
+							font-size: 1vw
+							font-weight: bold
+						&>.rightSection
+							flex: 1
+							display: flex
+							justify-content: flex-end
+							.btn
+								margin-right: 0.5vw
+								padding: 0.1vw
+								&.btnAdd
+									color: #a39c9c
+								&.btnRemove
+									color: #BB5346
+									over-flow: hidden
+								&.btnToCart
+									color: #a39c9c
+									&:active
+										color: #212529

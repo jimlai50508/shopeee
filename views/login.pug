@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	link(rel='stylesheet' href='/stylesheets/registerAndLogin.sass')
+	section
+		div 會員登入
+		form(action='/login' method='post')
+			div 輸入帳號
+			input(placeholder='username' name='username')
+			div 輸入密碼
+			input(placeholder='password' name='password' type='password')
+			div
+				button 送出

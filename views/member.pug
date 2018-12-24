@@ -1,0 +1,53 @@
+extends layout
+block content
+	link(rel='stylesheet' href='/stylesheets/member.sass')
+	script(type='text/javascript' src='/javascripts/scripts/favorite.js')
+	script(type='text/javascript' src='/javascripts/scripts/member.js')
+	section
+		.scene
+			.option
+				.optProduct(onclick='changeOpt("Product")') 個人賣場
+				.optFavorite(onclick='changeOpt("Favorite")') 我的收藏
+				.optOrder(onclick='changeOpt("Order")') 訂單紀錄
+			.myProduct
+				each product in products
+					.product
+						.topSection
+							a.far.fa-eye.preview(href=`../product/${product.productToken}` target='_blank')
+							//a.far.fa-edit.edit(href=`../product/edit/${product.editToken}` target='_blank')
+							a.fas.fa-trash.delete(href=`../product/delete/${product.deleteToken}`)
+						.bottomSection
+							.productImage
+								img(src=`https://s3.amazonaws.com/fakeshopee/${product.images[0]}`)
+							.productInfo
+								.productName #{product.product} 
+								div $ #{product.price} 數量 #{product.stock}
+			.myFavorite
+				each product in favorites
+					.product(class=`product${product.productToken} ${product.stock==0 ? 'soldout' : ''}`)
+						.topSection
+							img(src=`https://s3.amazonaws.com/fakeshopee/${product.images[0]}`)
+							div
+								.btn.btnRemove.fas.fa-trash(id=`remove_${product.productToken}` onclick=`removeFromFavorite('${product.productToken}'), elementRemove('${product.productToken}')`)
+						.bottomSection
+							.info
+								a.product(href=`/product/${product.productToken}`) #{product.product}
+								a.seller(href=`/seller/${product.seller}`) (#{product.seller})
+								div 價格 #{product.price}
+								div 數量 #{product.stock}
+							- var stringObj = JSON.stringify(product)
+							// 幹 這邊怎麼這難寫 setItem(index, item)如果index是數字, item會自動設成一樣的數字
+							.btn.btnToCart(onclick=`setStorage('${product.productToken}', '${stringObj}'), refreshCount(), getSellerTotal()`) + 加入購物車
+			.myOrder
+				each order in orders
+					.order
+						.time #{order.time}
+						each data in order.datas
+							.info
+								.seller #{data.seller}
+								.block
+									each item in data.items
+										.item
+											.product #{item.product}
+											.subtotal $ #{item.price} x #{item.number} = #{item.subtotal}
+						.total 總金額 #{order.total}

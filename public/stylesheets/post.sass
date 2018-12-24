@@ -1,0 +1,61 @@
+@mixin size($w, $h: $w)
+	width: $w
+	height: $h
+@media screen and (max-width: 500px) 
+	section
+		display: flex
+		justify-content: center
+		padding: 3vw
+		&>form
+			&>.formSection
+				display: flex
+				flex-direction: column
+				align-items: center
+				padding: 2vw
+				&>.leftSection, .rightSection
+					margin: 1vw
+					&>div
+						margin-top: 1vw
+				&>.leftSection
+					display: flex
+					flex-direction: column
+					width: 50%
+				&>.rightSection
+					display: flex
+					flex-direction: column
+					width: 50%
+					&>input
+						flex: 1
+					&>textarea
+						flex: 2
+			&>.btnSection
+				display: flex
+				justify-content: center
+@media screen and (min-width: 500px) 
+	section
+		display: flex
+		justify-content: center
+		padding: 3vw
+		&>form
+			&>.formSection
+				display: flex
+				padding: 2vw
+				&>.leftSection, .rightSection
+					margin: 1vw
+					&>div
+						margin-top: 1vw
+				&>.leftSection
+					display: flex
+					flex-direction: column
+					width: 50%
+				&>.rightSection
+					display: flex
+					flex-direction: column
+					width: 50%
+					&>input
+						flex: 1
+					&>textarea
+						flex: 2
+			&>.btnSection
+				display: flex
+				justify-content: center

@@ -1,0 +1,132 @@
+$background: 'https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1349,c_fill,g_auto,h_759,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F180117120827-01-where-to-shop-in-dubai-photos.jpg'
+$background2: 'http://www.oxfordproperties.com/Content/property/UPPERCDA/gallery/lrg/pic1.jpg?v=636732219728605456'
+$border: 2px solid #fff
+
+@mixin size($w, $h: $w)
+	width: $w
+	height: $h
+@mixin flex
+	display: flex
+	justify-content: center
+	align-items: center
+@mixin absolute
+	position: absolute
+	left: 0
+	top: 0
+
+html, body
+	background-color: transparent
+	font-family: '微軟正黑體'
+header.login, header.unlogin
+	background-color: transparent
+	box-shadow: 0 0 0 
+
+body:before
+	+size(100%)
+	+absolute
+	content: ''
+	display: block
+	z-index: 1
+	background: url($background2)
+	background-size: 350%
+	background-position: 50% 50%
+	filter: brightness(30%)
+section.intro
+	+size(100%)
+	+absolute
+	display: flex
+	justify-content: center
+	align-items: center
+	border: 5px solid
+	overflow: hidden
+	&>.box
+		display: none
+		&>.text
+			display: none
+	&>.forSmallScreen
+		display: flex
+		flex-direction: column
+		position: absolute
+		z-index: 2
+		&>a
+			display: block
+			margin: 2vh
+			padding: 5px 10px
+			font-size: 20px
+			border: 1.5px solid #fff
+			color: #fff
+			text-decoration: none
+@media screen and (min-width: 500px)
+	section.intro
+		overflow: hidden
+		&>.forSmallScreen
+			display: flex
+			flex-direction: row
+			jusitify-content: space-between
+			position: absolute
+			bottom: 30%
+			&>a
+				display: block
+				margin: 20px
+				padding: 5px 10px
+				font-size: 20px
+				border: 1.5px solid #fff
+				color: #fff
+				text-decoration: none
+@media screen and (min-width: 930px)
+	body:before
+		background: url($background)
+		background-size: 120%
+	section.intro
+		+size(100%, 100vh)
+		+flex
+		border: 1px solid transparent
+		position: absolute
+		top: 0px
+		color: #fff
+		z-index: 2
+		overflow: hidden
+		&:before
+			+size(100%)
+			content: ''
+			display: block
+			background-image: linear-gradient(150deg, transparent 85%, #e0384b 85%, #e0384b 85.3%, transparent 85.3%), linear-gradient(155deg, transparent 82%, #e0384b 82%, #e0384b 82.3%, transparent 82.3%), linear-gradient(70deg, transparent 92%, #e0384b 92%, #e0384b 92.3%, transparent 92.3%), linear-gradient(65deg, transparent 85%, #e0384b 85%, #e0384b 85.3%, transparent 85.3%)
+			opacity: 0.5
+		&>.box
+			+size(65%, 50%)
+			display: block
+			position: absolute
+			border-left: $border
+			border-top: $border
+			&>.text
+				display: block
+				position: absolute
+				left: 5%
+				bottom: -5%
+				&>h2
+					font-family: 'Anton'
+					font-weight: bold
+					letter-spacing: 3px
+				&>h5
+					width: 450px
+					font-family: 'Roboto Slab'
+					letter-spacing: 1px
+					line-height: 1.5
+			&:before
+				+size(102%, 100%)
+				content: ''
+				display: block
+				position: absolute
+				border-right: $border
+				border-bottom: $border
+				transform: translate(2%, 12%)
+			&:after
+				+size(98%, 102%)
+				content: ''
+				display: block
+				position: absolute
+				border-right: $border
+				border-bottom: $border
+				transform: translate(4%, 15%)
+		& .forSmallScreen
+			display: none

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	link(rel='stylesheet' href='/stylesheets/index.sass')
+	section.intro
+		.box
+			.text
+				h2 Go shopping now!
+				h5 Online shopping is a form of electronic commerce which allows consumers to directly buy goods or services from a seller over the Internet using a web browser.
+		.forSmallScreen 
+			if username
+				a(href='/product') Go shopping
+			else
+				a(href='/register') 立即註冊
+				a(href='/login') 我要登入

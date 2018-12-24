@@ -1,0 +1,64 @@
+extends layout
+block content
+	link(rel='stylesheet' href='/stylesheets/products.sass')
+	script(type='text/javascript' src='/javascripts/scripts/favorite.js')
+	script(type='text/javascript' src='/javascripts/scripts/categoryProducts.js')
+	.scene
+		section.category
+			span.symbol(onclick='showCategory()') &#9776
+		section.products
+			.topSection
+				- var page = parseInt(currentPage)
+				- var per = parseInt(perPage)
+				.nowPosition #{nowPosition}
+				.pageAndClearCart
+					.pageSection
+						if (page != 1)
+							a(href=`./${page - 1}`) < Previous
+						else
+							span.noPage < Previous
+						span.nowPage Page:#{page}
+						if (products.length == per)
+							a(href=`./${page + 1}`) Next >
+						else
+							span.noPage Next >
+					if username
+						.clearCart.fas.fa-trash-alt(onclick='clearStorage()')  清空購物車
+			.productSection
+				each product in products
+					div.product
+						.imgBlock
+							img(src=`https://s3.amazonaws.com/fakeshopee/${product.images[0]}`)
+						.infoSection
+							.firstSection
+								a.productCol(href=`/product/${product.productToken}` target='_blank') #{product.product}
+								a.sellerCol(href=`/seller/${product.seller}/1`) (#{product.seller})
+							.secondSection
+								.leftSection
+									span $ #{product.price}
+									span 數量 #{product.stock}
+								.rightSection
+									if username
+										if product.favorite
+											div.btn.btnAdd.fas.fa-heart(id=`add_${product.productToken}` onclick=`addToFavorite('${product.productToken}')` style='display: none')
+											div.btn.btnRemove.btnAdd.fas.fa-heart(id=`remove_${product.productToken}` onclick=`removeFromFavorite('${product.productToken}')`)
+										else
+											div.btn.btnAdd.btnAdd.fas.fa-heart(id=`add_${product.productToken}` onclick=`addToFavorite('${product.productToken}')`)
+											div.btn.btnRemove.btnAdd.fas.fa-heart(id=`remove_${product.productToken}` onclick=`removeFromFavorite('${product.productToken}')` style='display: none')
+										- var stringObj = JSON.stringify(product)
+										// 幹 這邊怎麼這難寫 setItem(index, item)如果index是數字, item會自動設成一樣的數字
+										div.btn.btnToCart.fas.fa-shopping-cart(onclick=`setStorage('${product.productToken}', '${stringObj}'), refreshCount(), getSellerTotal()`)
+			.topSection
+				- var page = parseInt(currentPage)
+				- var per = parseInt(perPage)
+				.pageAndClearCart
+					.pageSection
+						if (page != 1)
+							a(href=`./${page - 1}`) < Previous
+						else
+							span.noPage < Previous
+						span.nowPage Page:#{page}
+						if (products.length == per)
+							a(href=`./${page + 1}`) Next >
+						else
+							span.noPage Next >

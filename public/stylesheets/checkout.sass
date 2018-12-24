@@ -1,0 +1,169 @@
+@mixin size($w, $h: $w)
+	width: $w
+	height: $h
+
+@media screen and (max-width: 500px)
+	section
+		& *
+			position: relative
+		display: flex
+		flex-direction: column
+		align-items: center
+		padding: 10vw
+		&>.checkout
+			width: 90%
+			&>.checklist
+				margin-bottom: 2vw
+				&>.seller
+					font-size: 4vw
+				&>.total
+					margin-bottom: 1vw
+				&>.checkItem
+					color: #33405B
+					border: 1px solid
+					border-radius: 5px
+					margin-bottom: 1vw
+					&>.soldout, .inStock
+						display: flex
+						flex-direction: column
+						padding: 1.5vw
+						background-color: #eee
+						&>.topSection
+							display: flex
+							flex: 1
+							border-bottom: 1px solid
+							&>div
+								margin-right: 2vw
+							&>.remove
+								+size(2vw)
+								color: darkred
+								font-weight: bold
+								cursor: pointer
+						&>.bottomSection
+							display: flex
+							flex: 9
+							padding: 1vw
+							&>.leftSection
+								width: 50%
+								&>.description
+									display: none
+								&>div
+									margin-bottom: 0.5vw
+								& a
+									color: #33405B
+									text-decoration: none
+								& input
+									padding: 0.3vw
+							&>.rightSection
+								width: 50%
+								&>img
+									+size(100%)
+									box-shadow: 0 0 10px black
+
+@media screen and (min-width: 500px) and (max-width: 930px)
+	section
+		& *
+			position: relative
+		display: flex
+		flex-direction: column
+		align-items: center
+		padding: 10vw
+		&>.checkout
+			width: 75%
+			&>.checklist
+				margin-bottom: 2vw
+				&>.seller
+					font-size: 3vw
+				&>.total
+					margin-bottom: 1vw
+				&>.checkItem
+					color: #33405B
+					border: 1px solid
+					border-radius: 5px
+					margin-bottom: 1vw
+					&>.soldout, .inStock
+						display: flex
+						flex-direction: column
+						padding: 1.5vw
+						background-color: #eee
+						&>.topSection
+							display: flex
+							flex: 1
+							border-bottom: 1px solid
+							&>.remove
+								+size(2vw)
+								color: darkred
+								font-weight: bold
+								cursor: pointer
+						&>.bottomSection
+							display: flex
+							flex: 9
+							padding: 1vw
+							&>.leftSection
+								width: 50%
+								&>div
+									margin-bottom: 0.5vw
+								& a
+									color: #33405B
+									text-decoration: none
+								& input
+									padding: 0.3vw
+							&>.rightSection
+								width: 50%
+								&>img
+									+size(100%)
+									box-shadow: 0 0 10px black
+
+@media screen and (min-width: 930px) 
+	section
+		& *
+			position: relative
+		display: flex
+		flex-direction: column
+		align-items: center
+		padding: 5vw
+		&>.checkout
+			width: 50%
+			&>.checklist
+				margin-bottom: 2vw
+				&>.seller
+					font-size: 1.4vw
+				&>.total
+					margin-bottom: 1vw
+				&>.checkItem
+					color: #33405B
+					border: 1px solid
+					border-radius: 5px
+					margin-bottom: 1vw
+					&>.soldout, .inStock
+						display: flex
+						flex-direction: column
+						padding: 1.5vw
+						background-color: #eee
+						&>.topSection
+							display: flex
+							flex: 1
+							border-bottom: 1px solid
+							&>.remove
+								+size(2vw)
+								color: darkred
+								font-weight: bold
+								cursor: pointer
+						&>.bottomSection
+							display: flex
+							flex: 9
+							padding: 1vw
+							&>.leftSection
+								width: 50%
+								&>div
+									margin-bottom: 0.5vw
+								& a
+									color: #33405B
+									text-decoration: none
+								& input
+									padding: 0.3vw
+							&>.rightSection
+								width: 50%
+								&>img
+									+size(100%)
+									box-shadow: 0 0 10px black

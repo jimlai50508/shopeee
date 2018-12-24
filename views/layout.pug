@@ -1,0 +1,39 @@
+doctype html
+html
+	head
+		title Shopeee: #{nowPosition}
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,")
+		link(rel='stylesheet' href='/stylesheets/layout.sass')
+		link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+		link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
+		script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
+		script(type='text/javascript' src='/javascripts/scripts/cart.js')
+		script(type='text/javascript' src='/javascripts/scripts/search.js')
+		script(type='text/javascript' src='/javascripts/scripts/showmenu.js')
+	body
+		if username
+			header.login
+				.items
+					a.title(href='/') Shopeee
+					.links
+						form(id= 'searchForm')
+							input(type='text' id='searchInput' onkeyup='getSearch()' placeholder='Search..')
+						a(href='/checkout').cartHeader.fas.fa-shopping-cart
+							span.itemLength (0)
+						a(href='/post') 新增商品
+						a(href='/product') 商品頁面
+						a(href='/member') 帳號管理
+							span.username (#{username})
+						a(href='/logout') 登出
+				.topmenu
+					span.username #{username} 
+					span.symbol(onclick='showMenu(".links")') &#9776 
+		else
+			header.unlogin
+				.items
+					a.title(href='/') Shopeee
+					.links
+						a(href='/product') 商品頁面
+						a(href='/register') 註冊
+						a(href='/login') 登入
+		block content

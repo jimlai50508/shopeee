@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	link(rel='stylesheet' href='/stylesheets/post.sass')
+	script(type='text/javascript' src='/javascripts/scripts/categoryPost.js')
+	script(type='text/javascript' src='/javascripts/scripts/addImg.js')
+	section
+		form(action='/post' method='post' enctype='multipart/form-data')
+			.formSection
+				.leftSection
+					div 商品名稱
+					input(placeholder='product' name='product' required)
+					div 價格
+					input(type='number' placeholder='price' name='price' required)
+					div 數量
+					input(type='number' name='stock' value='1' required)
+					div 圖片1(required)
+					input(type='file' accept='image/*' name='image' required)
+					div 圖片2
+					input(type='file' accept='image/*' name='image')
+					div 圖片3
+					input(type='file' accept='image/*' name='image')
+					div 圖片4
+					input(type='file' accept='image/*' name='image')
+				.rightSection
+					div 分類
+					select(class='category' name='category' onchange='selectCategory()' required)
+						option(selected disabled) ---
+						option(value='food') 美食、禮品
+						option(value='male') 男裝、服飾
+						option(value='female') 女裝、服飾
+						option(value='life') 生活、家居
+						option(value='entertainment') 遊戲、娛樂
+						option(value='3c') 家電、3C 
+						option(value='sport') 運動、戶外
+						option(value='book') 書籍、學習
+						option(value='other') 其它
+					div 子分類
+					select(class='subcategory' name='subcategory' required)
+						option(selected disabled) ---
+					div 商品敘述
+					textarea(placeholder='description' name='description')
+			.btnSection
+				button 新增商品

@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css')
+@import url('https://fonts.googleapis.com/css?family=Notable')
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab')
+@import url('https://fonts.googleapis.com/css?family=Anton')
+@mixin size($w, $h: $w)
+	width: $w
+	height: $h
+@mixin flex
+	display: flex
+	justify-content: center
+	align-items: center
+
+*
+	font-family: 'Noto Sans TC', 'Roboto Slab', '微軟正黑體'
+	letter-spacing: 2px
+	box-sizing: border-box
+html, body
+	+size(100%)
+	margin: 0px
+header, section
+	position: relative
+header
+	z-index: 2
+section
+	z-index: 1
+
+// 統一設定中小螢幕header顏色
+@media screen and (max-width: 930px) 
+	header.login, header.unlogin
+		& .topmenu
+			position: fixed
+			color: darkgrey
+			z-index: 100
+
+// login header
+@media screen and (max-width: 930px) 
+	header.login
+		+size(100%, 100px)
+		position: relative
+		font-weight: bold
+		z-index: 3
+		& *
+			text-align: center
+		&>.items
+			+size(100%, 100px)
+			display: flex
+			justify-content: center
+			margin: 0 auto
+			&>.title
+				flex: 1
+				position: absolute
+				top: 40%
+				font-family: 'Notable'
+				font-size: 10vw
+				color: #ccc
+				text-decoration: none
+			&>.links
+				+size(100%, 100%)
+				display: flex
+				flex-direction: column
+				align-items: center
+				position: fixed
+				left: 100%
+				padding: 15%
+				background-color: #33405b
+				color: #ccc
+				transition: 0.5s
+				&.showMenu
+					left: 0%
+				&>a
+					display: block
+					width: 60%
+					margin-top: 15px
+					padding: 3px 8px
+					border: 2px solid transparent
+					text-decoration: none
+					font-size: 4vw
+					color: #ccc
+					&:hover
+						border-bottom: 2px solid #fff
+					&>span
+						font-size: 3vw
+		.topmenu
+			color: #ccc
+			position: fixed
+			right: 5%
+			top: 2%
+			&>.username
+				font-family: 'Notable'
+				font-size: 3vw
+			&>.symbol
+				cursor: pointer
+				font-size: 4vw
+
+@media screen and (min-width: 930px) 
+	header.login
+		background-color: #33405b
+		box-shadow: 0 0 10px #33405b
+		padding-bottom: 10px
+		position: relative
+		z-index: 3
+		&>.items
+			+size(75%, 100px)
+			display: flex
+			justify-content: space-between
+			align-items: flex-end
+			position: relative
+			z-index: 3
+			margin: 0 auto
+			&>.title
+				flex: 1
+				font-family: 'Notable'
+				font-size: 3vw
+				color: #ccc
+				text-decoration: none
+			&>.links
+				flex: 2
+				display: flex
+				flex-direction: row
+				justify-content: flex-end
+				align-items: center
+				&>form
+					+size(10vw, initial)
+					display: inline-block
+					margin-left: 1vw
+					order: 3
+					&>input
+						+size(9vw, 30%)
+						font-size: 0.8vw
+						padding: 5px							
+				&>a
+					display: inline-block
+					margin-right: 0vw
+					padding: 0.3vw 0.5vw
+					border: 2px solid transparent
+					color: #ccc
+					text-decoration: none
+					font-size: 1.2vw
+					order: 1
+					&>.username
+						font-size: 0.5vw
+						letter-spacing: 0px
+					&:hover
+						border-bottom: 2px solid #fff
+				&>.cartHeader
+					order: 2
+					&:hover
+						border: 2px solid transparent
+						color: #ddd
+		&>.topmenu
+			display: none
+
+// unlogin header
+@media screen and (max-width: 500px) 
+	header.unlogin
+		+size(100%, 100px)
+		font-weight: bold
+		z-index: 3
+		& *
+			text-align: center
+		&>.items
+			& .title
+				width: 100%
+				margin-top: 50px
+				font-family: 'Notable'
+				font-size: 10vw
+				color: #ccc
+				text-decoration: none
+			&>.links
+				&>a
+				display: none
+
+	.soldout
+		background-color: grey
+		&:before
+			content: '庫存不足'
+			position: absolute
+			right: 0px
+			top: 0px
+@media screen and (min-width: 500px) and (max-width: 930px)
+	header.unlogin
+		position: relative
+		z-index: 3
+		&>.items
+			+size(75%, 100px)
+			display: flex
+			margin: 0 auto
+			flex-direction: column
+			justify-content: center
+			&>.title
+				width: 100%
+				margin-top: 50px
+				font-family: 'Notable'
+				font-size: 8vw
+				color: #ccc
+				text-decoration: none
+			&>.links
+				display: none
+			&>.cart
+				+size(60px, 200px)
+				position: fixed
+				right: 0px
+				top: 200px
+				background-color: grey
+				font-size: 20px
+	.soldout
+		background-color: grey
+		&:before
+			content: '庫存不足'
+			position: absolute
+			right: 0px
+			top: 0px
+
+@media screen and (min-width: 930px)
+	header.unlogin
+		background-color: #33405b
+		box-shadow: 0 0 10px #33405b
+		padding-bottom: 10px
+		position: relative
+		z-index: 3
+		&>.items
+			+size(75%, 100px)
+			display: flex
+			justify-content: space-between
+			align-items: flex-end
+			margin: 0 auto
+			&>.title
+				flex: 1
+				font-family: 'Notable'
+				font-size: 3vw
+				color: #ccc
+				text-decoration: none
+			&>.links
+				flex: 1
+				&>a
+					display: inline-block
+					float: right
+					margin-left: 15px
+					padding: 5px 10px
+					border: 2px solid transparent
+					color: #ccc
+					text-decoration: none
+					font-size: 20px
+					&:hover
+						border-bottom: 2px solid #fff
